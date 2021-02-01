@@ -1,0 +1,32 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  generation: 2
+  name: jboss-pipeline
+spec:
+  resources:
+    - name: jboss-git-repo
+      type: git
+    - name: jboss-image
+      type: image
+  tasks:
+    - name: s2i-jboss
+      params:
+        - name: PATH_CONTEXT
+          value: .
+        - name: TLSVERIFY
+          value: 'false'
+        - name: MAVEN_CLEAR_REPO
+          value: 'false'
+        - name: TAG
+          value: '{{ .Values.image.tag | default "latest" }}'
+      resources:
+        inputs:
+          - name: source
+            resource: jboss-git-repo
+        outputs:
+          - name: image
+            resource: jboss-image
+      taskRef:
+        kind: Task
+        name: s2i-jboss-push-to-quay

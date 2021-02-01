@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: jboss-git-repo
+spec:
+  params:
+    - name: url
+      value: '{{ $.Values.git.url }}'
+    - name: revision
+      value: {{ $.Values.git.branch }}
+  type: git

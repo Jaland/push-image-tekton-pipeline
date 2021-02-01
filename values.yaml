@@ -1,0 +1,15 @@
+---
+git:
+  url: https://github.com/jland-redhat/jboss-helloworld.git
+  branch: main
+
+image:
+  name: poc
+  tag: '6.0'
+  url: '{{ $.Values.imageCredentials.registry }}/{{ $.Values.imageCredentials.username }}/{{ $.Values.image.name }}:{{ $.Values.image.tag }}'
+
+imageCredentials:
+  registry: quay.io
+  username: jland
+  password: 12345-druida
+  email: jland@redhat.com

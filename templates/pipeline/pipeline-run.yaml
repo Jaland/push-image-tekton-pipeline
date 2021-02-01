@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: jboss-pipeline-init-run-{{ randAlphaNum 5 | lower }}
+  annotations:
+    "helm.sh/hook": "post-install"
+spec:
+  pipelineRef:
+    name: jboss-pipeline
+  resources:
+    - name: jboss-git-repo
+      resourceRef:
+        name: jboss-git-repo
+    - name: jboss-image
+      resourceRef:
+        name: jboss-image
