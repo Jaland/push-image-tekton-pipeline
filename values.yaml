@@ -5,7 +5,7 @@ git:
 
 image:
   name: poc
-  tag: '6.0'
+  tag: '1.0'
   url: '{{ $.Values.imageCredentials.registry }}/{{ $.Values.imageCredentials.username }}/{{ $.Values.image.name }}:{{ $.Values.image.tag }}'
 
 imageCredentials:

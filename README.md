@@ -4,6 +4,11 @@
 
 A basic `tkn` pipeline that uses `s2i` to build a container image and pushes it to a Docker repository
 
+```
+helm upgrade -i test . --set git.url=<GIT URL> --set git.branch=main --set imageCredentials.password=<QUAY PASSWORD> --set imageCredentials.username=<QUAY USERNAME>
+```
+
+
 ## Parameters
 
 | Parameter                 | Description                                                        |
